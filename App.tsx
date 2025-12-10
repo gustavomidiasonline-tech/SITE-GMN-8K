@@ -40,7 +40,36 @@ const useScrollReveal = () => {
   }, []);
 };
 
-// --- Components ---
+// --- Custom Components ---
+
+// Google Colored Pin Icon
+const GooglePin = ({ className = "w-8 h-8" }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 0C22.4 0 0 22.4 0 50C0 60.5 3.3 70.3 9 78.4L50 100L91 78.4C96.7 70.3 100 60.5 100 50C100 22.4 77.6 0 50 0Z" fill="white"/>
+    <path d="M50 10C72.1 10 90 27.9 90 50C90 58.5 87.4 66.4 82.9 72.9L50 90L17.1 72.9C12.6 66.4 10 58.5 10 50C10 27.9 27.9 10 50 10Z" fill="#EA4335"/>
+    <path d="M50 10C27.9 10 10 27.9 10 50C10 58.5 12.6 66.4 17.1 72.9L50 90V50V10Z" fill="#DB4437"/> 
+    <path d="M50 10V50H90C90 27.9 72.1 10 50 10Z" fill="#EA4335"/>
+    <path d="M50 50H90C90 66.3 80.3 80.3 66 87L50 90V50Z" fill="#FBBC04"/>
+    <path d="M50 50V90L34 87C19.7 80.3 10 66.3 10 50H50Z" fill="#34A853"/>
+    <path d="M50 90L66 87C61.5 89 56 90 50 90Z" fill="#1A73E8"/>
+    <path d="M50 90L34 87C38.5 89 44 90 50 90Z" fill="#4285F4"/>
+    <circle cx="50" cy="40" r="14" fill="white"/>
+  </svg>
+);
+
+const Logo = () => (
+  <div className="flex items-center gap-2">
+    <div className="bg-white p-1 rounded-full shadow-lg">
+       <GooglePin className="w-8 h-8" />
+    </div>
+    <div className="flex flex-col leading-none">
+      <span className="text-xl font-black tracking-tighter text-white">GMN</span>
+      <span className="text-xl font-black tracking-tighter text-brand-500">TURBO</span>
+    </div>
+  </div>
+);
+
+// --- Sections ---
 
 // 1. Navigation
 const Navbar = ({ onOpenModal }: { onOpenModal: () => void }) => {
@@ -53,19 +82,12 @@ const Navbar = ({ onOpenModal }: { onOpenModal: () => void }) => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-md border-b border-brand-900/50 py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-md border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="bg-brand-600 p-1.5 rounded-lg">
-             <MapPin className="text-white w-6 h-6" />
-          </div>
-          <span className="text-xl md:text-2xl font-black tracking-tighter text-white">
-            MAPS<span className="text-brand-600">DOMINATOR</span>
-          </span>
-        </div>
+        <Logo />
         <button 
           onClick={onOpenModal}
-          className="hidden md:flex bg-brand-600 hover:bg-brand-500 text-white font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(34,197,94,0.5)] items-center gap-2 border border-brand-400/20"
+          className="hidden md:flex bg-brand-600 hover:bg-brand-500 text-white font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(66,133,244,0.5)] items-center gap-2 border border-brand-400/20"
         >
           <MessageCircle className="w-4 h-4" />
           Análise Gratuita
@@ -78,31 +100,31 @@ const Navbar = ({ onOpenModal }: { onOpenModal: () => void }) => {
 // 2. Hero Section
 const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-neutral-950 border-b border-brand-900/30">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-neutral-950 border-b border-white/10">
       {/* Background Banner Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2613&auto=format&fit=crop" 
           alt="Dark City Background" 
-          className="w-full h-full object-cover opacity-30 grayscale mix-blend-overlay"
+          className="w-full h-full object-cover opacity-20 grayscale mix-blend-overlay"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/80 to-neutral-950"></div>
-        {/* Radial Green Glow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/80 to-neutral-950"></div>
+        {/* Radial Blue Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-600/10 rounded-full blur-[120px] pointer-events-none animate-pulse-fast"></div>
       </div>
 
       <div className="container mx-auto px-4 z-10 text-center relative reveal">
         {/* Bonus Badge */}
-        <div className="inline-flex items-center gap-3 bg-brand-900/80 border border-brand-400 rounded-full px-6 py-3 mb-10 shadow-[0_0_30px_rgba(34,197,94,0.4)] animate-bounce cursor-default hover:bg-brand-900 transition-colors">
+        <div className="inline-flex items-center gap-3 bg-white/5 border border-brand-500/30 rounded-full px-6 py-3 mb-10 shadow-[0_0_30px_rgba(66,133,244,0.2)] animate-bounce cursor-default hover:bg-white/10 transition-colors backdrop-blur-sm">
           <Layout className="w-5 h-5 text-brand-400 animate-pulse" />
           <span className="text-white text-sm md:text-base font-bold uppercase tracking-wider">
-            Bônus: Ganhe um <span className="text-brand-400 underline decoration-2 underline-offset-4">Site Profissional</span> (R$ 1.500 OFF)
+            Bônus: Ganhe um <span className="text-brand-400 underline decoration-2 underline-offset-4">Site Profissional</span>
           </span>
         </div>
         
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight drop-shadow-2xl">
           DOMINE O TOPO DO<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4285F4] via-[#EA4335] via-[#FBBC04] to-[#34A853]">
             GOOGLE MAPS
           </span>
         </h1>
@@ -115,7 +137,7 @@ const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
         <div className="flex flex-col md:flex-row gap-5 justify-center items-center">
           <button 
             onClick={onOpenModal}
-            className="group w-full md:w-auto bg-brand-600 hover:bg-brand-500 text-white text-lg md:text-xl font-bold py-5 px-10 rounded-xl transition-all transform hover:-translate-y-1 shadow-[0_0_30px_rgba(22,163,74,0.6)] flex items-center justify-center gap-3 border border-brand-400/20"
+            className="group w-full md:w-auto bg-brand-600 hover:bg-brand-500 text-white text-lg md:text-xl font-bold py-5 px-10 rounded-xl transition-all transform hover:-translate-y-1 shadow-[0_0_30px_rgba(66,133,244,0.6)] flex items-center justify-center gap-3 border border-brand-400/20"
           >
             <MessageCircle className="w-6 h-6 fill-current" />
             QUERO VENDER MAIS
@@ -141,17 +163,17 @@ const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
 // 3. Pain Points
 const PainPoints = () => {
   return (
-    <section className="py-20 bg-neutral-900 border-b border-brand-900/10 relative overflow-hidden">
+    <section className="py-20 bg-neutral-900 border-b border-white/5 relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-brand-900/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4 reveal">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <div className="bg-neutral-950 p-8 rounded-2xl border border-neutral-800 relative overflow-hidden group hover:border-brand-900 transition-colors">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-bl-full blur-2xl"></div>
+            <div className="bg-neutral-950 p-8 rounded-2xl border border-white/10 relative overflow-hidden group hover:border-brand-500/50 transition-colors">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-google-red/10 rounded-bl-full blur-2xl"></div>
               <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6 text-red-500" />
+                <AlertTriangle className="w-6 h-6 text-google-red" />
                 O Custo da Invisibilidade
               </h3>
               <ul className="space-y-4">
@@ -163,7 +185,7 @@ const PainPoints = () => {
                   "Dinheiro deixado na mesa todos os dias."
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-neutral-400 group-hover:text-neutral-300 transition-colors">
-                    <X className="w-5 h-5 text-red-500 mt-0.5 shrink-0" />
+                    <X className="w-5 h-5 text-google-red mt-0.5 shrink-0" />
                     <span className="font-medium">{item}</span>
                   </li>
                 ))}
@@ -177,7 +199,7 @@ const PainPoints = () => {
             <p className="text-lg text-neutral-400 leading-relaxed mb-6">
               97% das pessoas pesquisam online antes de comprar algo localmente. Se sua empresa não está entre os 3 primeiros resultados do Google Maps, você está, literalmente, entregando dinheiro para o concorrente.
             </p>
-            <div className="p-6 bg-brand-950/50 border-l-4 border-brand-500 rounded-r-lg">
+            <div className="p-6 bg-brand-900/20 border-l-4 border-brand-500 rounded-r-lg">
               <p className="text-lg text-white font-bold italic">
                 "Não é sorte. É engenharia de dados. E nós temos o código."
               </p>
@@ -198,17 +220,17 @@ const Features = () => {
       desc: "Descobrimos exatamente como seu cliente pesquisa e configuramos seu perfil para aparecer nessas buscas."
     },
     {
-      icon: <Star className="w-10 h-10 text-brand-400" />,
+      icon: <Star className="w-10 h-10 text-google-yellow" />,
       title: "Gestão de Reputação",
       desc: "Estratégias para aumentar avaliações 5 estrelas e neutralizar comentários negativos profissionalmente."
     },
     {
-      icon: <Layout className="w-10 h-10 text-brand-400" />,
+      icon: <Layout className="w-10 h-10 text-google-blue" />,
       title: "Site One-Page Grátis",
       desc: "Desenvolvemos um site rápido e otimizado para conversão que ajuda a ranquear seu perfil no Google."
     },
     {
-      icon: <BarChart3 className="w-10 h-10 text-brand-400" />,
+      icon: <BarChart3 className="w-10 h-10 text-google-green" />,
       title: "Relatórios de Performance",
       desc: "Você vai ver o telefone tocando, mas também enviaremos relatórios provando o aumento de rotas e chamadas."
     },
@@ -218,7 +240,7 @@ const Features = () => {
       desc: "Manteremos seu perfil vivo e atrativo com fotos de alta qualidade e atualizações constantes."
     },
     {
-      icon: <ShieldCheck className="w-10 h-10 text-brand-400" />,
+      icon: <ShieldCheck className="w-10 h-10 text-google-blue" />,
       title: "Blindagem de Perfil",
       desc: "Protegemos seu perfil contra edições maliciosas de concorrentes e suspensões do Google."
     }
@@ -241,9 +263,9 @@ const Features = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <div key={index} className="bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 p-8 rounded-xl hover:border-brand-500/50 hover:bg-neutral-900/60 transition-all duration-300 group hover:-translate-y-2 shadow-lg hover:shadow-brand-900/20">
-              <div className="mb-6 bg-neutral-800 w-16 h-16 rounded-xl flex items-center justify-center group-hover:bg-brand-600 transition-colors shadow-inner">
-                {React.cloneElement(feature.icon as React.ReactElement, { className: "w-8 h-8 text-brand-400 group-hover:text-white transition-colors" })}
+            <div key={index} className="bg-neutral-900/40 backdrop-blur-sm border border-white/10 p-8 rounded-xl hover:border-brand-500/50 hover:bg-neutral-900/60 transition-all duration-300 group hover:-translate-y-2 shadow-lg hover:shadow-brand-900/20">
+              <div className="mb-6 bg-neutral-800 w-16 h-16 rounded-xl flex items-center justify-center group-hover:bg-white transition-colors shadow-inner">
+                {React.cloneElement(feature.icon as React.ReactElement<{ className?: string }>, { className: `w-8 h-8 ${feature.icon.props.className.replace('text-brand-400', 'text-brand-400')} group-hover:scale-110 transition-transform` })}
               </div>
               <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
               <p className="text-neutral-400 text-sm leading-relaxed group-hover:text-neutral-300">{feature.desc}</p>
@@ -258,7 +280,7 @@ const Features = () => {
 // 4.5 Dedicated Bonus Website Section
 const BonusWebsite = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-brand-950 via-black to-neutral-950 border-y border-brand-900/30 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-brand-950 via-black to-neutral-950 border-y border-white/10 relative overflow-hidden">
       {/* Abstract Background Shapes */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-600/5 rounded-full blur-[100px] pointer-events-none"></div>
       
@@ -275,7 +297,7 @@ const BonusWebsite = () => {
             </h2>
             <p className="text-lg text-neutral-300 mb-8 leading-relaxed">
               A maioria das agências cobra mais de R$ 1.500 apenas para criar um site simples. 
-              No <strong>Maps Dominator</strong>, você ganha uma Landing Page de Alta Conversão totalmente de graça ao assinar o plano.
+              No <strong>GMN TURBO</strong>, você ganha uma Landing Page de Alta Conversão totalmente de graça ao assinar o plano.
             </p>
             
             <div className="space-y-6">
@@ -315,11 +337,11 @@ const BonusWebsite = () => {
           </div>
 
           <div className="lg:w-1/2 w-full">
-            <div className="relative bg-neutral-900 border border-neutral-800 rounded-2xl p-4 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-500">
+            <div className="relative bg-neutral-900 border border-neutral-800 rounded-2xl p-4 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-500 group">
               <div className="absolute -top-4 -right-4 bg-brand-600 text-white font-bold w-24 h-24 rounded-full flex items-center justify-center text-center text-sm shadow-lg z-20 animate-bounce">
                 VALOR:<br/>R$ 0,00
               </div>
-              <div className="bg-neutral-950 rounded-xl overflow-hidden aspect-[4/3] relative border border-neutral-800 group">
+              <div className="bg-neutral-950 rounded-xl overflow-hidden aspect-[4/3] relative border border-neutral-800 group-hover:border-brand-500/50 transition-colors">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10"></div>
                 <img 
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" 
@@ -328,9 +350,9 @@ const BonusWebsite = () => {
                 />
                 <div className="absolute bottom-0 left-0 w-full p-8 z-20">
                   <div className="flex gap-2 mb-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-google-red"></div>
+                    <div className="w-3 h-3 rounded-full bg-google-yellow"></div>
+                    <div className="w-3 h-3 rounded-full bg-google-green"></div>
                   </div>
                   <p className="text-brand-400 font-mono text-xs mb-1">Status: Online & Otimizado</p>
                   <h3 className="text-white font-bold text-2xl">Sua Empresa.com.br</h3>
@@ -348,7 +370,7 @@ const BonusWebsite = () => {
 // 5. Pricing Section
 const Pricing = ({ onOpenModal }: { onOpenModal: () => void }) => {
   return (
-    <section className="py-24 bg-neutral-900 relative border-y border-neutral-800">
+    <section className="py-24 bg-neutral-900 relative border-y border-white/5">
       <div className="container mx-auto px-4 reveal">
         <div className="max-w-4xl mx-auto bg-neutral-950 rounded-3xl border border-brand-900/50 shadow-2xl overflow-hidden flex flex-col md:flex-row relative">
           
@@ -401,14 +423,14 @@ const Pricing = ({ onOpenModal }: { onOpenModal: () => void }) => {
                 <span className="text-neutral-400 text-sm font-bold uppercase mb-2">Por apenas</span>
                 <div className="flex items-baseline gap-1">
                   <span className="text-2xl font-bold text-neutral-400">12x</span>
-                  <span className="text-6xl font-black text-white tracking-tighter">89,90</span>
+                  <span className="text-6xl font-black text-white tracking-tighter">321,54</span>
                 </div>
                 <span className="text-brand-500 font-bold mt-2">ou R$ 897,00 à vista</span>
             </div>
             
             <button 
               onClick={onOpenModal}
-              className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(22,163,74,0.4)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
+              className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(66,133,244,0.4)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-5 h-5 fill-current" />
               GARANTIR OFERTA
@@ -477,7 +499,7 @@ const Testimonials = () => {
                   <span className="text-2xl font-serif text-white">"</span>
                </div>
               <div className="flex gap-1 mb-4 pt-2">
-                {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 text-brand-500 fill-brand-500" />)}
+                {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 text-google-yellow fill-google-yellow" />)}
               </div>
               <p className="text-neutral-300 mb-6 italic text-sm leading-relaxed">"{t.text}"</p>
               <div className="flex items-center gap-4 mt-auto">
@@ -601,9 +623,8 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
-             <div className="flex items-center gap-2 mb-4">
-              <MapPin className="text-brand-600 w-6 h-6" />
-              <span className="text-xl font-bold text-white">MAPS<span className="text-brand-600">DOMINATOR</span></span>
+             <div className="mb-4">
+               <Logo />
             </div>
             <p className="text-neutral-500 text-sm leading-relaxed">
               Especialistas em posicionamento local. Transformamos buscas no Google em dinheiro no seu caixa.
@@ -632,14 +653,14 @@ const Footer = () => {
             <h4 className="text-white font-bold mb-4">Contato</h4>
              <ul className="space-y-2 text-sm text-neutral-500">
               <li className="flex items-center gap-2"><MessageCircle className="w-4 h-4" /> (11) 99999-9999</li>
-              <li className="flex items-center gap-2"><Globe className="w-4 h-4" /> contato@mapsdominator.com.br</li>
+              <li className="flex items-center gap-2"><Globe className="w-4 h-4" /> contato@gmnturbo.com.br</li>
             </ul>
           </div>
         </div>
         
         <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-neutral-600 text-sm">
-            &copy; {new Date().getFullYear()} Maps Dominator. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} GMN TURBO. Todos os direitos reservados.
           </div>
           <div className="flex gap-6 text-sm">
              <a href="#" className="text-neutral-600 hover:text-brand-500 transition-colors">Termos de Uso</a>
@@ -654,10 +675,10 @@ const Footer = () => {
 // 11. Sticky Mobile CTA
 const StickyCTA = ({ onOpenModal }: { onOpenModal: () => void }) => {
   return (
-    <div className="fixed bottom-0 left-0 w-full p-4 bg-neutral-900/90 backdrop-blur border-t border-brand-900 z-40 md:hidden">
+    <div className="fixed bottom-0 left-0 w-full px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] bg-neutral-900/95 backdrop-blur border-t border-brand-900 z-50 md:hidden">
       <button 
         onClick={onOpenModal}
-        className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3.5 rounded-lg shadow-[0_0_15px_rgba(22,197,94,0.3)] flex items-center justify-center gap-2 animate-pulse-fast"
+        className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3.5 rounded-lg shadow-[0_0_15px_rgba(66,133,244,0.3)] flex items-center justify-center gap-2 animate-pulse-fast"
       >
         <MessageCircle className="w-5 h-5 fill-current" />
         FALAR COM UM ESPECIALISTA
@@ -673,7 +694,7 @@ const App = () => {
   useScrollReveal();
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white selection:bg-brand-500 selection:text-white font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-neutral-950 text-white selection:bg-brand-500 selection:text-white font-sans overflow-x-hidden pb-24 md:pb-0">
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
       <Hero onOpenModal={() => setIsModalOpen(true)} />
       <Stats />
@@ -691,7 +712,7 @@ const App = () => {
         
         <div className="container mx-auto px-4 max-w-4xl relative z-10 reveal">
           <h2 className="text-4xl md:text-7xl font-black text-white mb-8 tracking-tight">
-            Chega de ser um <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-700 decoration-4 line-through decoration-red-500">fantasma</span> digital.
+            Chega de ser um <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-700 decoration-4 line-through decoration-google-red">fantasma</span> digital.
           </h2>
           <p className="text-xl text-neutral-300 mb-12 max-w-2xl mx-auto">
             A oportunidade de dominar sua região está a um clique de distância.
@@ -699,7 +720,7 @@ const App = () => {
           </p>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-brand-600 hover:bg-brand-500 text-white text-xl md:text-2xl font-bold py-6 px-12 rounded-2xl transition-all transform hover:-translate-y-2 shadow-[0_0_50px_rgba(22,163,74,0.5)] flex items-center justify-center gap-3 mx-auto"
+            className="bg-brand-600 hover:bg-brand-500 text-white text-xl md:text-2xl font-bold py-6 px-12 rounded-2xl transition-all transform hover:-translate-y-2 shadow-[0_0_50px_rgba(66,133,244,0.5)] flex items-center justify-center gap-3 mx-auto"
           >
             <Zap className="w-6 h-6 fill-white" />
             DOMINAR O GOOGLE AGORA

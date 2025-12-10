@@ -2,8 +2,9 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Domine o Google Maps - Consultoria Especializada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>GMN TURBO - Domine o Google Maps</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <script>
@@ -14,18 +15,26 @@
               sans: ['Inter', 'sans-serif'],
             },
             colors: {
+              // Updated Brand Palette to Google Blue base
               brand: {
-                50: '#f0fdf4',
-                100: '#dcfce7',
-                200: '#bbf7d0',
-                300: '#86efac',
-                400: '#4ade80',
-                500: '#22c55e',
-                600: '#16a34a',
-                700: '#15803d',
-                800: '#166534',
-                900: '#14532d',
-                950: '#052e16',
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+                500: '#4285f4', // Google Blue
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+                950: '#172554',
+              },
+              // Specific Google Colors
+              google: {
+                red: '#EA4335',
+                yellow: '#FBBC04',
+                green: '#34A853',
+                blue: '#4285F4'
               }
             },
             animation: {
@@ -58,17 +67,19 @@
       }
       
       .gradient-text {
-        background: linear-gradient(to right, #4ade80, #16a34a);
+        background: linear-gradient(to right, #4285F4, #34A853);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      /* Loader */
+      /* Multi-color Loader */
       .loader {
         width: 48px;
         height: 48px;
-        border: 5px solid #166534;
-        border-bottom-color: #4ade80;
+        border: 5px solid #4285F4; /* Blue */
+        border-right-color: #34A853; /* Green */
+        border-bottom-color: #FBBC04; /* Yellow */
+        border-left-color: #EA4335; /* Red */
         border-radius: 50%;
         display: inline-block;
         box-sizing: border-box;
@@ -95,7 +106,7 @@
   <body>
     <div id="root" class="h-screen w-full flex flex-col items-center justify-center bg-neutral-950">
       <span class="loader"></span>
-      <p class="text-brand-500 font-bold animate-pulse">Carregando estratégia...</p>
+      <p class="text-white font-bold animate-pulse">Carregando <span class="text-brand-500">GMN TURBO</span>...</p>
     </div>
     <script type="module" src="./index.tsx"></script>
   </body>
