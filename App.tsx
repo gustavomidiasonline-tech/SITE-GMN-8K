@@ -460,155 +460,47 @@ const PackageDetails = () => {
 const Pricing = ({ onOpenModal }: { onOpenModal: () => void }) => {
   return (
     <section className="py-24 bg-neutral-900 relative border-y border-white/5">
-      <div className="container mx-auto px-4 reveal">
+      <div className="container mx-auto px-4 reveal text-center">
         
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-            Escolha o Plano Ideal
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+            Investimento sob Medida
           </h2>
-          <p className="text-neutral-400 max-w-xl mx-auto">
-            Comece a aparecer no Google e atrair clientes hoje mesmo. Sem mensalidades escondidas nos planos de entrada.
+          <p className="text-neutral-400 text-lg md:text-xl mb-12 leading-relaxed max-w-2xl mx-auto">
+            Entendemos que cada empresa tem um momento e uma necessidade diferente. 
+            Nossa equipe está pronta para analisar o seu cenário e montar 
+            o plano estratégico ideal para você dominar sua região.
           </p>
+
+          <div className="bg-neutral-950 border border-white/10 rounded-2xl p-8 md:p-12 max-w-3xl mx-auto shadow-2xl shadow-brand-900/20 relative overflow-hidden group hover:border-brand-500/30 transition-colors">
+            {/* Decorative background glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-600/5 rounded-full blur-[80px] group-hover:bg-brand-600/10 transition-all duration-500"></div>
+
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="w-20 h-20 bg-brand-900/20 rounded-full flex items-center justify-center mb-6 border border-brand-500/30 shadow-inner">
+                <TrendingUp className="w-10 h-10 text-brand-400" />
+              </div>
+              
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Solicite uma Cotação Personalizada</h3>
+              <p className="text-neutral-400 mb-8 max-w-lg">
+                Fale com um de nossos consultores para entender qual estratégia trará o maior retorno sobre investimento para o seu modelo de negócio.
+              </p>
+
+              <button 
+                onClick={onOpenModal}
+                className="w-full md:w-auto bg-brand-600 hover:bg-brand-500 text-white text-lg font-bold py-4 px-10 rounded-xl transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-brand-500/25 flex items-center justify-center gap-3 border border-brand-400/20"
+              >
+                <WhatsAppIcon className="w-6 h-6 fill-current" />
+                Falar com Especialista
+              </button>
+              
+              <p className="mt-6 text-sm text-neutral-500">
+                Sem compromisso. Análise de perfil inclusa.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
-          
-          {/* 1. Essencial (Left) */}
-          <div className="bg-neutral-950 rounded-2xl border border-white/10 p-8 flex flex-col h-full hover:border-brand-500/20 transition-all group">
-            <h3 className="text-2xl font-bold text-white mb-2">Essencial</h3>
-            <p className="text-neutral-400 text-sm mb-6 h-10">Apenas o necessário para aparecer no mapa.</p>
-            
-            <div className="mb-8">
-              <span className="text-sm text-neutral-400">3x de</span>
-              <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-black text-white">R$ 214,00</span>
-              </div>
-              <span className="text-sm text-neutral-500 font-bold">ou R$ 597,00 à vista</span>
-            </div>
-
-            <button 
-              onClick={onOpenModal}
-              className="w-full bg-neutral-800 hover:bg-neutral-700 text-white font-bold py-3.5 rounded-lg transition-all mb-8 border border-neutral-700 hover:border-neutral-600"
-            >
-              Escolher Básico
-            </button>
-
-            <div className="space-y-4 text-sm flex-1">
-              {[
-                "Google Meu Negócio Completo",
-                "Pesquisa de Palavras-Chave",
-                "Otimização de Fotos",
-                "Configuração de Serviços",
-                "Geolocalização Básica"
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <Check className="w-4 h-4 text-brand-500 mt-0.5 shrink-0" />
-                  <span className="text-neutral-300">{item}</span>
-                </div>
-              ))}
-              <div className="flex items-center gap-3 opacity-50">
-                 <X className="w-4 h-4 text-neutral-500" />
-                 <span className="text-neutral-500 line-through">Site Profissional</span>
-              </div>
-            </div>
-          </div>
-
-          {/* 2. Dominator (Center - Highlighted) */}
-          <div className="bg-[#172554]/10 rounded-3xl border-2 border-brand-600 p-8 md:p-10 flex flex-col h-full relative transform md:-translate-y-4 shadow-2xl shadow-brand-900/30">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
-              MAIS VENDIDO
-            </div>
-
-            <h3 className="text-2xl font-bold text-white mb-2">Dominador + Bônus</h3>
-            <p className="text-brand-200 text-sm mb-6 h-10">O pacote completo para dominar a região.</p>
-            
-            <div className="mb-8">
-              <span className="text-sm text-brand-300">3x de</span>
-              <div className="flex items-baseline gap-1">
-                <span className="text-5xl font-black text-white">R$ 357,39</span>
-              </div>
-               <span className="text-sm text-brand-200 font-bold">ou R$ 997,00 à vista</span>
-            </div>
-
-            <button 
-              onClick={onOpenModal}
-              className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-lg shadow-lg shadow-green-900/20 transition-all mb-8 flex items-center justify-center gap-2 transform hover:-translate-y-1"
-            >
-              <WhatsAppIcon className="w-5 h-5 fill-current" />
-              Quero o Bônus Agora
-            </button>
-
-            <div className="space-y-4 text-sm flex-1">
-              <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-brand-400 mt-0.5 shrink-0" />
-                  <span className="text-white font-semibold">Tudo do Plano Essencial</span>
-              </div>
-              {[
-                "Geolocalização Avançada",
-                "Descrição Otimizada com IA",
-                "Site Profissional (Bônus)",
-                "Hospedagem Grátis (1 ano)",
-                "Botão WhatsApp no Site",
-                "Suporte Prioritário",
-                "QR Code Personalizado",
-                "Pack de 3 Artes Profissionais",
-                "Cadastro em Diretórios Locais"
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-brand-400 mt-0.5 shrink-0" />
-                  <span className="text-neutral-200">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 3. Acelerador (Right) */}
-          <div className="bg-neutral-950 rounded-2xl border border-white/10 p-8 flex flex-col h-full hover:border-brand-500/20 transition-all group">
-            <h3 className="text-2xl font-bold text-white mb-2">Acelerador</h3>
-            <p className="text-neutral-400 text-sm mb-6 h-10">Para quem busca crescimento agressivo.</p>
-            
-            <div className="mb-8">
-              <span className="text-sm text-neutral-400">3x de</span>
-              <div className="flex items-baseline gap-1">
-                 <span className="text-4xl font-black text-white">R$ 823,39</span>
-              </div>
-              <span className="text-sm text-neutral-500 font-bold">ou R$ 2.297,00 à vista</span>
-              <div className="mt-1"><span className="text-xs text-brand-500 font-bold">*Incluso gestão de tráfego</span></div>
-            </div>
-
-            <button 
-              onClick={onOpenModal}
-              className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-bold py-3.5 rounded-lg transition-all mb-8 border border-neutral-700 flex items-center justify-center gap-2"
-            >
-              <Rocket className="w-4 h-4 text-brand-500" />
-              Escolher Acelerador
-            </button>
-
-            <div className="space-y-4 text-sm flex-1">
-              <div className="flex items-start gap-3">
-                  <Check className="w-4 h-4 text-brand-500 mt-0.5 shrink-0" />
-                  <span className="text-white font-semibold">Tudo do Plano Dominador</span>
-              </div>
-              {[
-                "Gestão de Tráfego Pago (30 dias)",
-                "Criação de Anúncios Google",
-                "4 Postagens no Google/Mês",
-                "Relatório de Performance",
-                "Consultoria de Vendas",
-                "Treinamento de Equipe",
-                "Script de Vendas Validado",
-                "Configuração de CRM Grátis",
-                "Análise de Espionagem da Concorrência"
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <Check className="w-4 h-4 text-brand-500 mt-0.5 shrink-0" />
-                  <span className="text-neutral-300">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
       </div>
     </section>
   );
