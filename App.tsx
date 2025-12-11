@@ -1,17 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   MapPin, 
   TrendingUp, 
-  DollarSign, 
   Star, 
   CheckCircle2, 
   AlertTriangle, 
   ArrowRight,
   BarChart3,
   Search,
-  Users,
   X,
-  MessageCircle,
   ShieldCheck,
   Zap,
   Globe,
@@ -20,7 +17,9 @@ import {
   Layout,
   Smartphone,
   Gauge,
-  MousePointerClick
+  MousePointerClick,
+  Check,
+  Rocket
 } from 'lucide-react';
 
 // --- Hooks ---
@@ -42,30 +41,20 @@ const useScrollReveal = () => {
 
 // --- Custom Components ---
 
-// Google Colored Pin Icon
-const GooglePin = ({ className = "w-8 h-8" }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 0C22.4 0 0 22.4 0 50C0 60.5 3.3 70.3 9 78.4L50 100L91 78.4C96.7 70.3 100 60.5 100 50C100 22.4 77.6 0 50 0Z" fill="white"/>
-    <path d="M50 10C72.1 10 90 27.9 90 50C90 58.5 87.4 66.4 82.9 72.9L50 90L17.1 72.9C12.6 66.4 10 58.5 10 50C10 27.9 27.9 10 50 10Z" fill="#EA4335"/>
-    <path d="M50 10C27.9 10 10 27.9 10 50C10 58.5 12.6 66.4 17.1 72.9L50 90V50V10Z" fill="#DB4437"/> 
-    <path d="M50 10V50H90C90 27.9 72.1 10 50 10Z" fill="#EA4335"/>
-    <path d="M50 50H90C90 66.3 80.3 80.3 66 87L50 90V50Z" fill="#FBBC04"/>
-    <path d="M50 50V90L34 87C19.7 80.3 10 66.3 10 50H50Z" fill="#34A853"/>
-    <path d="M50 90L66 87C61.5 89 56 90 50 90Z" fill="#1A73E8"/>
-    <path d="M50 90L34 87C38.5 89 44 90 50 90Z" fill="#4285F4"/>
-    <circle cx="50" cy="40" r="14" fill="white"/>
+// Official WhatsApp Icon SVG
+const WhatsAppIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
   </svg>
 );
 
 const Logo = () => (
-  <div className="flex items-center gap-2">
-    <div className="bg-white p-1 rounded-full shadow-lg">
-       <GooglePin className="w-8 h-8" />
-    </div>
-    <div className="flex flex-col leading-none">
-      <span className="text-xl font-black tracking-tighter text-white">GMN</span>
-      <span className="text-xl font-black tracking-tighter text-brand-500">TURBO</span>
-    </div>
+  <div className="flex items-center">
+    <img 
+      src="https://i.ibb.co/gLkCMqjB/logo-MN-SEM-FUNDO.png" 
+      alt="MN Consultoria Logo" 
+      className="h-12 md:h-14 w-auto object-contain"
+    />
   </div>
 );
 
@@ -89,7 +78,7 @@ const Navbar = ({ onOpenModal }: { onOpenModal: () => void }) => {
           onClick={onOpenModal}
           className="hidden md:flex bg-brand-600 hover:bg-brand-500 text-white font-bold py-2.5 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(66,133,244,0.5)] items-center gap-2 border border-brand-400/20"
         >
-          <MessageCircle className="w-4 h-4" />
+          <WhatsAppIcon className="w-5 h-5 fill-current" />
           Análise Gratuita
         </button>
       </div>
@@ -139,7 +128,7 @@ const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
             onClick={onOpenModal}
             className="group w-full md:w-auto bg-brand-600 hover:bg-brand-500 text-white text-lg md:text-xl font-bold py-5 px-10 rounded-xl transition-all transform hover:-translate-y-1 shadow-[0_0_30px_rgba(66,133,244,0.6)] flex items-center justify-center gap-3 border border-brand-400/20"
           >
-            <MessageCircle className="w-6 h-6 fill-current" />
+            <WhatsAppIcon className="w-6 h-6 fill-current" />
             QUERO VENDER MAIS
             <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
           </button>
@@ -367,76 +356,258 @@ const BonusWebsite = () => {
   );
 };
 
+// 4.6 Package Details Comparison Section
+const PackageDetails = () => {
+  return (
+    <section className="py-24 bg-neutral-950 border-t border-white/5">
+      <div className="container mx-auto px-4 reveal">
+        <div className="text-center mb-16">
+          <p className="text-brand-500 font-bold uppercase tracking-wider text-sm mb-2">PACOTE COMPLETO</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            O que você recebe?
+          </h2>
+          <p className="text-neutral-400">
+            Tudo o que seu negócio precisa para se posicionar como autoridade na sua cidade.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* GMB Card */}
+          <div className="bg-[#0f1115] rounded-3xl border border-white/5 p-8 md:p-10 relative overflow-hidden hover:border-brand-500/30 transition-colors group">
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 opacity-5 group-hover:opacity-10 transition-opacity">
+              <MapPin className="w-64 h-64 text-white" />
+            </div>
+            
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="bg-brand-600 p-2.5 rounded-lg">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Google Meu Negócio</h3>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  "Categoria Certa",
+                  "Fotos Otimizadas",
+                  "SEO Local",
+                  "Palavras-chave Estratégicas",
+                  "Descrição Profissional",
+                  "Links Clicáveis",
+                  "Geolocalização Precisa",
+                  "Configurações Avançadas",
+                  "Perfil 100% Preenchido"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="rounded-full border border-brand-500/30 p-0.5 shrink-0">
+                      <Check className="w-3 h-3 text-brand-500" />
+                    </div>
+                    <span className="text-neutral-300 font-medium text-sm md:text-base">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Website Card */}
+          <div className="bg-[#172554]/20 rounded-3xl border border-brand-500/30 p-8 md:p-10 relative overflow-hidden hover:bg-[#172554]/30 transition-colors group">
+            {/* Free Badge */}
+            <div className="absolute top-8 right-8 bg-google-yellow text-black text-xs font-black px-3 py-1.5 rounded-md uppercase z-20">
+              GRÁTIS
+            </div>
+            
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <Layout className="w-64 h-64 text-brand-300" />
+            </div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="bg-google-green p-2.5 rounded-lg">
+                  <Globe className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Site Profissional</h3>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  "Design Moderno",
+                  "Totalmente Responsivo",
+                  "Botão WhatsApp Clicável",
+                  "Páginas Otimizadas",
+                  "Layout Premium",
+                  "Feito Sob Medida",
+                  "Hospedagem de Alta Performance",
+                  "Integração com GMB"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="rounded-full border border-google-green/30 p-0.5 shrink-0">
+                      <Check className="w-3 h-3 text-google-green" />
+                    </div>
+                    <span className="text-neutral-300 font-medium text-sm md:text-base">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
 // 5. Pricing Section
 const Pricing = ({ onOpenModal }: { onOpenModal: () => void }) => {
   return (
     <section className="py-24 bg-neutral-900 relative border-y border-white/5">
       <div className="container mx-auto px-4 reveal">
-        <div className="max-w-4xl mx-auto bg-neutral-950 rounded-3xl border border-brand-900/50 shadow-2xl overflow-hidden flex flex-col md:flex-row relative">
-          
-          {/* Best Value Badge */}
-          <div className="absolute top-0 right-0 bg-brand-600 text-white text-xs font-bold px-4 py-1 rounded-bl-xl z-20">
-            OFERTA POR TEMPO LIMITADO
-          </div>
+        
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+            Escolha o Plano Ideal
+          </h2>
+          <p className="text-neutral-400 max-w-xl mx-auto">
+            Comece a aparecer no Google e atrair clientes hoje mesmo. Sem mensalidades escondidas nos planos de entrada.
+          </p>
+        </div>
 
-          {/* Left Side: Content */}
-          <div className="p-8 md:p-12 md:w-3/5 flex flex-col justify-center">
-            <h3 className="text-3xl font-bold text-white mb-2">Plano Dominador</h3>
-            <p className="text-neutral-400 mb-6 text-sm">Tudo o que você precisa para ser o número 1.</p>
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+          
+          {/* 1. Essencial (Left) */}
+          <div className="bg-neutral-950 rounded-2xl border border-white/10 p-8 flex flex-col h-full hover:border-brand-500/20 transition-all group">
+            <h3 className="text-2xl font-bold text-white mb-2">Essencial</h3>
+            <p className="text-neutral-400 text-sm mb-6 h-10">Apenas o necessário para aparecer no mapa.</p>
             
-            <div className="space-y-4 mb-8">
+            <div className="mb-8">
+              <span className="text-sm text-neutral-400">3x de</span>
+              <div className="flex items-baseline gap-1">
+                <span className="text-4xl font-black text-white">R$ 214,00</span>
+              </div>
+              <span className="text-sm text-neutral-500 font-bold">ou R$ 597,00 à vista</span>
+            </div>
+
+            <button 
+              onClick={onOpenModal}
+              className="w-full bg-neutral-800 hover:bg-neutral-700 text-white font-bold py-3.5 rounded-lg transition-all mb-8 border border-neutral-700 hover:border-neutral-600"
+            >
+              Escolher Básico
+            </button>
+
+            <div className="space-y-4 text-sm flex-1">
               {[
-                "Otimização Completa do Perfil",
-                "Gestão de Avaliações e Reputação",
-                "Postagens Semanais com Copywriting",
-                "Relatórios Mensais de Desempenho",
-                "Suporte Prioritário via WhatsApp",
+                "Google Meu Negócio Completo",
+                "Pesquisa de Palavras-Chave",
+                "Otimização de Fotos",
+                "Configuração de Serviços",
+                "Geolocalização Básica"
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="bg-brand-900/30 p-1 rounded-full">
-                    <CheckCircle2 className="w-4 h-4 text-brand-500" />
-                  </div>
-                  <span className="text-sm md:text-base text-neutral-300">
-                    {item}
-                  </span>
+                <div key={i} className="flex items-start gap-3">
+                  <Check className="w-4 h-4 text-brand-500 mt-0.5 shrink-0" />
+                  <span className="text-neutral-300">{item}</span>
                 </div>
               ))}
-              {/* Highlighted Bonus Item */}
-              <div className="flex items-center gap-3 bg-brand-900/20 p-3 rounded-lg border border-brand-500/20">
-                <div className="bg-brand-500 p-1 rounded-full">
-                  <CheckCircle2 className="w-4 h-4 text-white" />
-                </div>
-                 <span className="text-sm md:text-base text-white font-bold">
-                    BÔNUS: Site One-Page Completo (R$ 1.500 OFF)
-                  </span>
+              <div className="flex items-center gap-3 opacity-50">
+                 <X className="w-4 h-4 text-neutral-500" />
+                 <span className="text-neutral-500 line-through">Site Profissional</span>
               </div>
             </div>
           </div>
 
-          {/* Right Side: Pricing Action */}
-          <div className="bg-brand-950 md:w-2/5 p-8 md:p-12 flex flex-col justify-center items-center border-l border-brand-900/30 relative overflow-hidden">
-            <div className="absolute inset-0 bg-brand-600/5 animate-pulse-fast"></div>
-            
-            <span className="text-neutral-500 line-through text-lg mb-1">De R$ 1.500,00</span>
-            
-            <div className="flex flex-col items-center mb-6">
-                <span className="text-neutral-400 text-sm font-bold uppercase mb-2">Por apenas</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-bold text-neutral-400">12x</span>
-                  <span className="text-6xl font-black text-white tracking-tighter">321,54</span>
-                </div>
-                <span className="text-brand-500 font-bold mt-2">ou R$ 897,00 à vista</span>
+          {/* 2. Dominator (Center - Highlighted) */}
+          <div className="bg-[#172554]/10 rounded-3xl border-2 border-brand-600 p-8 md:p-10 flex flex-col h-full relative transform md:-translate-y-4 shadow-2xl shadow-brand-900/30">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+              MAIS VENDIDO
             </div>
+
+            <h3 className="text-2xl font-bold text-white mb-2">Dominador + Bônus</h3>
+            <p className="text-brand-200 text-sm mb-6 h-10">O pacote completo para dominar a região.</p>
             
+            <div className="mb-8">
+              <span className="text-sm text-brand-300">3x de</span>
+              <div className="flex items-baseline gap-1">
+                <span className="text-5xl font-black text-white">R$ 357,39</span>
+              </div>
+               <span className="text-sm text-brand-200 font-bold">ou R$ 997,00 à vista</span>
+            </div>
+
             <button 
               onClick={onOpenModal}
-              className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(66,133,244,0.4)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
+              className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-lg shadow-lg shadow-green-900/20 transition-all mb-8 flex items-center justify-center gap-2 transform hover:-translate-y-1"
             >
-              <MessageCircle className="w-5 h-5 fill-current" />
-              GARANTIR OFERTA
+              <WhatsAppIcon className="w-5 h-5 fill-current" />
+              Quero o Bônus Agora
             </button>
-            <p className="text-neutral-500 text-xs mt-4 text-center">Garantia de 7 dias ou seu dinheiro de volta.</p>
+
+            <div className="space-y-4 text-sm flex-1">
+              <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-brand-400 mt-0.5 shrink-0" />
+                  <span className="text-white font-semibold">Tudo do Plano Essencial</span>
+              </div>
+              {[
+                "Geolocalização Avançada",
+                "Descrição Otimizada com IA",
+                "Site Profissional (Bônus)",
+                "Hospedagem Grátis (1 ano)",
+                "Botão WhatsApp no Site",
+                "Suporte Prioritário",
+                "QR Code Personalizado",
+                "Pack de 3 Artes Profissionais",
+                "Cadastro em Diretórios Locais"
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-brand-400 mt-0.5 shrink-0" />
+                  <span className="text-neutral-200">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* 3. Acelerador (Right) */}
+          <div className="bg-neutral-950 rounded-2xl border border-white/10 p-8 flex flex-col h-full hover:border-brand-500/20 transition-all group">
+            <h3 className="text-2xl font-bold text-white mb-2">Acelerador</h3>
+            <p className="text-neutral-400 text-sm mb-6 h-10">Para quem busca crescimento agressivo.</p>
+            
+            <div className="mb-8">
+              <span className="text-sm text-neutral-400">3x de</span>
+              <div className="flex items-baseline gap-1">
+                 <span className="text-4xl font-black text-white">R$ 823,39</span>
+              </div>
+              <span className="text-sm text-neutral-500 font-bold">ou R$ 2.297,00 à vista</span>
+              <div className="mt-1"><span className="text-xs text-brand-500 font-bold">*Incluso gestão de tráfego</span></div>
+            </div>
+
+            <button 
+              onClick={onOpenModal}
+              className="w-full bg-neutral-900 hover:bg-neutral-800 text-white font-bold py-3.5 rounded-lg transition-all mb-8 border border-neutral-700 flex items-center justify-center gap-2"
+            >
+              <Rocket className="w-4 h-4 text-brand-500" />
+              Escolher Acelerador
+            </button>
+
+            <div className="space-y-4 text-sm flex-1">
+              <div className="flex items-start gap-3">
+                  <Check className="w-4 h-4 text-brand-500 mt-0.5 shrink-0" />
+                  <span className="text-white font-semibold">Tudo do Plano Dominador</span>
+              </div>
+              {[
+                "Gestão de Tráfego Pago (30 dias)",
+                "Criação de Anúncios Google",
+                "4 Postagens no Google/Mês",
+                "Relatório de Performance",
+                "Consultoria de Vendas",
+                "Treinamento de Equipe",
+                "Script de Vendas Validado",
+                "Configuração de CRM Grátis",
+                "Análise de Espionagem da Concorrência"
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <Check className="w-4 h-4 text-brand-500 mt-0.5 shrink-0" />
+                  <span className="text-neutral-300">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -603,7 +774,7 @@ const LeadModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
           </div>
           
           <button type="submit" className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-brand-500/20 transition-all transform hover:-translate-y-1 flex justify-center gap-2 items-center">
-            <MessageCircle className="w-5 h-5" />
+            <WhatsAppIcon className="w-5 h-5 fill-current" />
             QUERO VENDER MAIS
           </button>
           
@@ -652,7 +823,7 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-4">Contato</h4>
              <ul className="space-y-2 text-sm text-neutral-500">
-              <li className="flex items-center gap-2"><MessageCircle className="w-4 h-4" /> (11) 99999-9999</li>
+              <li className="flex items-center gap-2"><WhatsAppIcon className="w-4 h-4" /> (11) 99999-9999</li>
               <li className="flex items-center gap-2"><Globe className="w-4 h-4" /> contato@gmnturbo.com.br</li>
             </ul>
           </div>
@@ -674,13 +845,25 @@ const Footer = () => {
 
 // 11. Sticky Mobile CTA
 const StickyCTA = ({ onOpenModal }: { onOpenModal: () => void }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show only after scrolling down a bit (e.g. 300px) to avoid duplicate buttons on hero
+      setIsVisible(window.scrollY > 300);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="fixed bottom-0 left-0 w-full px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] bg-neutral-900/95 backdrop-blur border-t border-brand-900 z-50 md:hidden">
+    <div className={`fixed bottom-0 left-0 w-full px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] bg-neutral-900/95 backdrop-blur border-t border-brand-900 z-50 md:hidden transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
       <button 
         onClick={onOpenModal}
         className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3.5 rounded-lg shadow-[0_0_15px_rgba(66,133,244,0.3)] flex items-center justify-center gap-2 animate-pulse-fast"
       >
-        <MessageCircle className="w-5 h-5 fill-current" />
+        <WhatsAppIcon className="w-5 h-5 fill-current" />
         FALAR COM UM ESPECIALISTA
       </button>
     </div>
@@ -701,6 +884,7 @@ const App = () => {
       <PainPoints />
       <Features />
       <BonusWebsite />
+      <PackageDetails />
       <Pricing onOpenModal={() => setIsModalOpen(true)} />
       <Testimonials />
       <FAQ />
