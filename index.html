@@ -104,9 +104,11 @@
 </script>
 </head>
   <body>
-    <div id="root" class="h-screen w-full flex flex-col items-center justify-center bg-neutral-950">
-      <span class="loader"></span>
-      <p class="text-white font-bold animate-pulse">Carregando <span class="text-brand-500">GMN TURBO</span>...</p>
+    <div id="root">
+      <div class="h-screen w-full flex flex-col items-center justify-center bg-neutral-950 fixed inset-0 z-50">
+        <span class="loader"></span>
+        <p class="text-white font-bold animate-pulse">Carregando <span class="text-brand-500">GMN TURBO</span>...</p>
+      </div>
     </div>
     <script type="module" src="./index.tsx"></script>
   </body>

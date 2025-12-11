@@ -877,7 +877,7 @@ const App = () => {
   useScrollReveal();
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white selection:bg-brand-500 selection:text-white font-sans overflow-x-hidden pb-24 md:pb-0">
+    <div className="w-full min-h-screen bg-neutral-950 text-white selection:bg-brand-500 selection:text-white font-sans overflow-x-hidden pb-24 md:pb-0">
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
       <Hero onOpenModal={() => setIsModalOpen(true)} />
       <Stats />
